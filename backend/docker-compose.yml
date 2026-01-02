@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:16
+    container_name: tftwrapped-db
+    environment:
+      POSTGRES_DB: tftwrapped
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  backend:
+    build: .
+    container_name: tftwrapped-backend
+    depends_on:
+      - db
+    environment:
+      RIOT_API_KEY: ${RIOT_API_KEY}
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/tftwrapped
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    ports:
+      - "8080:8080"
+
+volumes:
+  db_data:

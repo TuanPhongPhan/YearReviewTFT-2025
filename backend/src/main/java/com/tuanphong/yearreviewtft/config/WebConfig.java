@@ -1,4 +1,4 @@
-package com.tuanphong.yearreviewtft;
+package com.tuanphong.yearreviewtft.config;
 
 import java.io.IOException;
 

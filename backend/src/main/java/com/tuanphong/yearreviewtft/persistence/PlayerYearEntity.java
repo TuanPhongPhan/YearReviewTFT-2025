@@ -61,7 +61,7 @@ public class PlayerYearEntity {
         updatedAt = Instant.now();
     }
 
-    // getters/setters (generate in IntelliJ)
+    // getters/setters
 
     public Long getId() { return id; }
     public String getPuuid() { return puuid; }

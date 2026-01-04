@@ -1,6 +1,9 @@
 package com.tuanphong.yearreviewtft.persistence;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
 import java.time.Instant;
 
 @Entity
@@ -17,8 +20,9 @@ public class MatchCacheEntity {
     @Column(nullable = false)
     private Instant fetchedAt;
 
-    @Column(columnDefinition = "jsonb", nullable = false)
-    private String payloadJson; // raw JSON string
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name = "payload_json", columnDefinition = "jsonb", nullable = false)
+    private String payloadJson;
 
     @PrePersist
     void prePersist() {

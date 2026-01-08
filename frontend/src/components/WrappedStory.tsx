@@ -57,7 +57,6 @@ export default function WrappedStory({cards}: { cards: WrappedCard[] }) {
         axis: "y",
         loop: false,
         duration: 22,
-        // better story feel on touch
         dragFree: false,
     });
 
@@ -126,17 +125,19 @@ export default function WrappedStory({cards}: { cards: WrappedCard[] }) {
                         <div
                             className={
                                 c.type === "stat"
-                                    ? "flex flex-1 items-center"
-                                    : "mt-6 flex flex-1 min-h-0"
+                                    ? "flex flex-1 items-center justify-center"
+                                    : c.type === "cta"
+                                        ? "flex flex-1 min-h-0"
+                                        : "mt-6 flex flex-1 m   in-h-0"
                             }
                         >
                             <motion.div
-                                initial={{opacity: 0, y: 16}}
-                                animate={{opacity: 1, y: 0}}
-                                transition={{duration: 0.5, ease: "easeOut"}}
-                                className="w-full"
+                                initial={{ opacity: 0, y: 16 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, ease: "easeOut" }}
+                                className="w-full h-full"
                             >
-                                {c.type === "cover" ? (
+                                 c.type === "cover" ? (
                                     <div className="mt-10 sm:mt-14">
                                         {/* small kicker */}
                                         <div className="text-white/75 text-base tracking-[0.25em] uppercase">
@@ -144,29 +145,26 @@ export default function WrappedStory({cards}: { cards: WrappedCard[] }) {
                                         </div>
 
                                         {/* hero */}
-                                        <div
-                                            className="mt-6 text-6xl sm:text-8xl font-black leading-[0.92] tracking-tight">
+                                        <div className="mt-6 text-6xl sm:text-8xl font-black leading-[0.92] tracking-tight">
                                             Let’s rewind
                                             <span className="block text-white/85">your set.</span>
                                         </div>
 
                                         {/* sub */}
-                                        <div
-                                            className="mt-5 text-lg sm:text-xl text-white/85 max-w-[38ch] leading-relaxed">
+                                        <div className="mt-5 text-lg sm:text-xl text-white/85 max-w-[38ch] leading-relaxed">
                                             A full-year recap of your climbs, throws, comfort comps, and villain arcs.
                                         </div>
 
                                         {/* CTA */}
                                         <div className="mt-8">
-                                            <div
-                                                className="inline-flex items-center gap-2 rounded-full bg-white/12 border border-white/15 px-4 py-2 text-sm text-white/90 backdrop-blur">
+                                            <div className="inline-flex items-center gap-2 rounded-full bg-white/12 border border-white/15 px-4 py-2 text-sm text-white/90 backdrop-blur">
                                                 Swipe ↑ to start
                                             </div>
                                         </div>
                                     </div>
                                 ) : (
                                     <>
-                                        <TitleBlock title={c.title}/>
+                                        <TitleBlock title={c.title} />
 
                                         <Headline>{c.headline}</Headline>
 
@@ -204,7 +202,7 @@ export default function WrappedStory({cards}: { cards: WrappedCard[] }) {
                                                                 hover:bg-white/14 hover:border-white/20 transition-transform duration-300 hover:-translate-y-0.5"
                                                             >
                                                                 <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300
-                                                                bg-gradient-to-r from-white/10 via-white/0 to-white/10" />
+                                                                     bg-gradient-to-r from-white/10 via-white/0 to-white/10" />
 
                                                                 <div className="relative flex items-center gap-4">
                                                                     <div className="w-8 text-center text-sm font-semibold text-white/75 tabular-nums">
@@ -248,14 +246,12 @@ export default function WrappedStory({cards}: { cards: WrappedCard[] }) {
                                                 {c.meta.map((m) => (
                                                     <span key={m.id} className="font-semibold">
                                                         {m.label}
-                                                    </span>
+                                                    c</span>
                                                 ))}
                                             </div>
                                         )}
                                     </>
-                                )}
                             </motion.div>
-
                         </div>
                     </CardShell>
                 </div>

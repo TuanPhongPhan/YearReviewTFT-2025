@@ -7,12 +7,14 @@ import com.tuanphong.yearreviewtft.service.WrappedService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.http.MediaType;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
 @RestController
 @RequestMapping("/api/wrapped")
+@Validated
 public class WrappedController {
 
     private final WrappedService wrappedService;
